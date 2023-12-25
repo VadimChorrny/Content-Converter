@@ -34,6 +34,11 @@ export default function Home() {
         }
     }, [content]);
 
+    // todo: move to env or constants
+    const websiteUrl: string = 'https://content-converter-hvh3-jehcc09eh-vadimchorrny.vercel.app';
+
+    const ogImage: string = `${websiteUrl}/images/banner/banner.png`;
+
     return (
         <>
             <Head>
@@ -41,6 +46,21 @@ export default function Home() {
                 <meta name="description"
                       content="An enticing tool for instantly converting text into HTML: Content Converter. Edit and generate HTML effortlessly!"/>
                 <link rel="icon" href="/favicon/favicon.ico"/>
+                <meta property="og:image" content={ogImage}/>
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:image" content={ogImage}/>
+                <meta name="twitter:site" content="@byteplusplus"/>
+                <meta name="twitter:creator" content="@byteplusplus"/>
+                <meta name="twitter:title" content="Content Converter"/>
+                <meta name="twitter:description"
+                      content="An enticing tool for instantly converting text into HTML: Content Converter. Edit and generate HTML effortlessly!"/>
+                <meta property="og:title" content="Content Converter"/>
+                <meta property="og:description"
+                      content="An enticing tool for instantly converting text into HTML: Content Converter. Edit and generate HTML effortlessly!"/>
+                <meta property="og:url" content={websiteUrl}/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:locale" content="en_US"/>
+                <meta property="og:site_name" content="Content Converter"/>
             </Head>
             <h1 className={"font-bold px-5 text-center mt-24 md:text-4xl sm:text-5xl text-2xl mb-5"}>
                 Content Converter -

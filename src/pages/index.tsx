@@ -13,24 +13,26 @@ const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
 const inter = Inter({subsets: ['latin']})
 
 export default function Home() {
-    const [value, setValue] = useState<string>('');
+    const [content, setContent] = useState<string>('');
     const [showResult, setShowResult] = useState<boolean>(false);
     const notify = () => toast("Copied to clipboard!");
     const handleCopyCode = async () => {
-        await navigator.clipboard.writeText(value);
+        await navigator.clipboard.writeText(content);
         notify();
     }
 
     useEffect(() => {
         try {
             // Застосування підсвічування коду до всіх блоків <code>
-            document.querySelectorAll('pre').forEach((block) => {
-                hljs.highlightElement(block as HTMLElement);
-            });
+            const codes: NodeListOf<HTMLPreElement> = document.querySelectorAll('pre');
+            if (codes.length > 0)
+                codes.forEach((block: HTMLPreElement) => {
+                    hljs.highlightElement(block);
+                });
         } catch (e) {
             console.error(e);
         }
-    }, [value]);
+    }, [content]);
 
     return (
         <>
@@ -55,8 +57,8 @@ export default function Home() {
                     </h2>
                     <ReactQuill
                         theme="snow"
-                        value={value}
-                        onChange={setValue}
+                        value={content}
+                        onChange={setContent}
                         modules={{
                             toolbar: [
                                 [{'header': [1, 2, 3, 4, 5, 6, false]}],
@@ -82,11 +84,11 @@ export default function Home() {
                     </h2>
                     <div className={'w-full border-2 border-gray-300 p-4'}>
                         <code>
-                            {value}
+                            {content}
                         </code>
                     </div>
                     <button className={'mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'}
-                            disabled={!value}
+                            disabled={!content}
                             onClick={handleCopyCode}>
                         Copy
                     </button>
@@ -98,8 +100,8 @@ export default function Home() {
                             {showResult ? 'Hide the rendered HTML' : 'Click here to see the rendered HTML'}
                         </span>
                     </p>
-                    {showResult && <div className={'w-full border-2 border-gray-300 p-4 mt-4'}
-                                        dangerouslySetInnerHTML={{__html: value}}/>}
+                    {showResult && <div className={'w-full border-2 border-gray-300 p-4 mt-4 text-wrap'}
+                                        dangerouslySetInnerHTML={{__html: content}}/>}
                 </section>
             </main>
             <footer className={"flex justify-center items-center h-24 bg-gray-100"}>

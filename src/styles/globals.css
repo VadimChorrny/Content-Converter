@@ -15,9 +15,13 @@ body {
     /*    background-color: #1a202c;*/
     /*    color: #fff;*/
     /*}*/
+
     pre {
         padding: 25px;
         border-radius: 15px;
         font-size: 14px;
+        span {
+            white-space: pre-wrap;
+        }
     }
 }

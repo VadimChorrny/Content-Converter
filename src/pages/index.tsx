@@ -1,3 +1,4 @@
+"use client";
 import {Inter} from 'next/font/google'
 import Head from "next/head";
 import {useEffect, useState} from "react";
@@ -22,10 +23,14 @@ export default function Home() {
     }
 
     useEffect(() => {
-        // Застосування підсвічування коду до всіх блоків <code>
-        document.querySelectorAll('pre').forEach((block) => {
-            hljs.highlightBlock(block as HTMLElement);
-        });
+        try {
+            // Застосування підсвічування коду до всіх блоків <code>
+            document.querySelectorAll('pre').forEach((block) => {
+                hljs.highlightBlock(block as HTMLElement);
+            });
+        } catch (e) {
+            console.error(e);
+        }
     }, [value]);
 
     return (

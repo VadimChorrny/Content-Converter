@@ -102,8 +102,8 @@ export default function Home() {
                     <h2 className="md:text-2xl font-bold mb-2 sm:text-3xl">
                         HTML code
                     </h2>
-                    <div className={'w-full border-2 border-gray-300 p-4'}>
-                        <code>
+                    <div className={'w-full border-2 border-gray-300 p-4 truncate'}>
+                        <code className={''}>
                             {content}
                         </code>
                     </div>

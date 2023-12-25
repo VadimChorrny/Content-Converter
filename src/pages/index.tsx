@@ -8,7 +8,6 @@ import {toast} from "react-toastify";
 import hljs from "highlight.js";
 import 'highlight.js/styles/atom-one-dark.css';
 
-
 const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
 
 const inter = Inter({subsets: ['latin']})
@@ -26,7 +25,7 @@ export default function Home() {
         try {
             // Застосування підсвічування коду до всіх блоків <code>
             document.querySelectorAll('pre').forEach((block) => {
-                hljs.highlightBlock(block as HTMLElement);
+                hljs.highlightElement(block as HTMLElement);
             });
         } catch (e) {
             console.error(e);
@@ -41,17 +40,17 @@ export default function Home() {
                       content="An enticing tool for instantly converting text into HTML: Content Converter. Edit and generate HTML effortlessly!"/>
                 <link rel="icon" href="/favicon/favicon.ico"/>
             </Head>
-            <h1 className={"text-4xl font-bold text-center mt-24 "}>
+            <h1 className={"font-bold px-5 text-center mt-24 md:text-4xl sm:text-5xl text-2xl mb-5"}>
                 Content Converter -
                 <span className={"text-blue-500"}>
                     {" HTML"}
                 </span> Generator 📄
             </h1>
             <main
-                className={`flex min-h-screen flex-col items-center p-24 ${inter.className}`}
+                className={`flex min-h-screen flex-col items-center ${inter.className} md:p-24 sm:p-12 p-6`}
             >
                 <section className="w-full">
-                    <h2 className="text-2xl font-bold mb-2">
+                    <h2 className="md:text-2xl font-bold mb-2 sm:text-3xl">
                         Enter your content
                     </h2>
                     <ReactQuill
@@ -78,7 +77,7 @@ export default function Home() {
                     />
                 </section>
                 <section className={`w-full mt-24 ${inter.className}`}>
-                    <h2 className="text-2xl font-bold mb-2">
+                    <h2 className="md:text-2xl font-bold mb-2 sm:text-3xl">
                         HTML code
                     </h2>
                     <div className={'w-full border-2 border-gray-300 p-4'}>

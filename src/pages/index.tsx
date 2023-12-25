@@ -124,12 +124,15 @@ export default function Home() {
                                         dangerouslySetInnerHTML={{__html: content}}/>}
                 </section>
             </main>
-            <footer className={"flex justify-center items-center h-24 bg-gray-100"}>
+            <footer className={"flex flex-col justify-center items-center h-24 bg-gray-100"}>
                 <div className={"text-center"}>
                     <a href={"https://vadym-chornyi-website.vercel.app"}
                        target={"_blank"} className={"hover:underline"}>
                         This website was created by Vadym Chornyi © {new Date().getFullYear()}
                     </a>
+                </div>
+                <div>
+                    Version 1.2.0.🚀
                 </div>
             </footer>
         </>
